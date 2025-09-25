@@ -3,7 +3,7 @@ import { showError } from "../components/error.js";
 const cityInput = document.querySelector(".city-input");
 
 export const isCyrillic = (text) => {
-  const cyrillicPattern = /^[\u0400-\u052F]+$/;
+  const cyrillicPattern = /[\u0400-\u04FF]/u;
   return cyrillicPattern.test(text);
 };
 

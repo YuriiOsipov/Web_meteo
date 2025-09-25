@@ -1,9 +1,7 @@
 export const capitalizeCity = (city) => {
   if (!city) return city;
 
-  const citiesWithHyphens = ["Івано-Франківськ", "Буэнос-Айрес"];
-
-  if (citiesWithHyphens.includes(city)) {
+  if (city.includes("-")) {
     return city
       .toLowerCase()
       .split(/[\s-]/)
