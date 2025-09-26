@@ -1,8 +1,10 @@
 import { apiKey, baseUrl } from "./apiKeyAndHost.js";
-import { cityInput } from "../components/inputForm.js";
+import { cityInput, getWeatherByForm } from "../components/inputForm.js";
 import { showError } from "../components/error.js";
 import { isCyrillic } from "../healpers/checkCyrilic.js";
 import { saveCityToLocalStorage } from "../healpers/saveCityToLocalStorage.js";
+import { getWeather, getForecast } from "./getWeatherAndForecast.js";
+import { renderCurrentWeather } from "../components/currentWeather.js";
 
 export const getGeoData = async () => {
   let city = cityInput.value.trim();
@@ -36,7 +38,13 @@ export const getGeoData = async () => {
 
     saveCityToLocalStorage(city);
 
-    console.log(lat, lon);
+    const weatherData = await getWeather(lat, lon);
+    const forecastData = await getForecast(lat, lon);
+
+    console.log(weatherData);
+    console.log(forecastData);
+
+    renderCurrentWeather(weatherData, city);
   } catch (error) {
     console.error(error.message);
     showError("Дані не прийшли");
