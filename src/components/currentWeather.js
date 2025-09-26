@@ -2,6 +2,8 @@ import { updateWithDirection } from "../healpers/windParam.js";
 import { updateHumidityScale } from "../healpers/humidityParam.js";
 import { formatTime } from "../healpers/formatTime.js";
 import { calcDayLength } from "../healpers/calcDayLength.js";
+import { calcSunPosition } from "../healpers/calcSunPosition.js";
+import { updateSunPosition } from "../healpers/calcSunPosition.js";
 
 const currentCity = document.querySelector(".city");
 const currentTemp = document.querySelector(".temperature");
@@ -55,7 +57,10 @@ export const renderCurrentWeather = (data, city) => {
     : "Невідомо";
   sunsetItem.textContent = sunset ? formatTime(sunset, timezone) : "Невідомо";
 
-  dayLength.textContent = `Продовженість дня ${
+  dayLength.textContent = `Тривалість дня ${
     sunrise && sunset ? calcDayLength(sunrise, sunset) : "Невідомо"
   }`;
+
+  const sunPosition = sunrise && sunset ? calcSunPosition(sunrise, sunset) : 0;
+  updateSunPosition(sunPosition);
 };

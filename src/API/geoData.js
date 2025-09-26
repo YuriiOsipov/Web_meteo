@@ -45,6 +45,7 @@ export const getGeoData = async () => {
     console.log(forecastData);
 
     renderCurrentWeather(weatherData, city);
+    renderHourlyForecast(forecastData);
   } catch (error) {
     console.error(error.message);
     showError("Дані не прийшли");
