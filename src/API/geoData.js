@@ -6,6 +6,7 @@ import { saveCityToLocalStorage } from "../healpers/saveCityToLocalStorage.js";
 import { getWeather, getForecast } from "./getWeatherAndForecast.js";
 import { renderCurrentWeather } from "../components/currentWeather.js";
 import { renderHourlyForecast } from "../components/hourlyForecast.js";
+import { renderDailyForecast } from "../components/dailyForecast.js";
 
 export const getGeoData = async () => {
   let city = cityInput.value.trim();
@@ -47,6 +48,7 @@ export const getGeoData = async () => {
 
     renderCurrentWeather(weatherData, city);
     renderHourlyForecast(forecastData);
+    renderDailyForecast(forecastData);
   } catch (error) {
     console.error(error.message);
     showError("Дані не прийшли");

@@ -1,8 +1,8 @@
 export const formatDate = (date) => {
   const datePart = date.toLocaleDateString("uk-UA", {
-    weekday: "short",
+    weekday: "long",
     day: "numeric",
-    month: "short",
+    month: "long",
   });
 
   const timePart = date.toLocaleTimeString("uk-UA", {
