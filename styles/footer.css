@@ -7,7 +7,7 @@ footer {
   transition: background-color 1s ease;
 }
 
-footer a {
+footer p {
   color: var(--light-text-color);
   text-decoration: none;
 }
