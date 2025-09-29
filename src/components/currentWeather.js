@@ -24,7 +24,10 @@ export const renderCurrentWeather = (data, city) => {
   feelsLike.textContent = `Відчувається як ${Math.round(
     data.main?.feels_like || 0
   )}°C`;
-  currentDescription.textContent = data.weather?.[0]?.description || "Невідомо";
+  currentDescription.textContent = data.weather?.[0]?.description
+    ? data.weather[0].description.charAt(0).toUpperCase() +
+      data.weather[0].description.slice(1)
+    : "Невідомо";
   currentWeatherIcon.src = `https://openweathermap.org/img/wn/${
     data?.weather?.[0]?.icon || "01d"
   }@2x.png`;
