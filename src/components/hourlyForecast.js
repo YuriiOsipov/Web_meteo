@@ -1,7 +1,12 @@
+import { showError } from "./error.js";
+
 const hourlyForecast = document.querySelector(".hourly-scroll");
 
 export const renderHourlyForecast = (data) => {
   hourlyForecast.innerHTML = "";
+
+  if (!data) showError("Данні про погоду недоступні");
+
   const currentDate = new Date();
 
   currentDate.setHours(0, 0, 0, 0);
@@ -16,8 +21,10 @@ export const renderHourlyForecast = (data) => {
     "Субота",
   ];
 
+  const timezoneOffset = data.city.timezone * 1000;
+
   data.list.forEach((item) => {
-    const date = new Date(item.dt * 1000);
+    const date = new Date(item.dt * 1000 + timezoneOffset);
     const hour = date.getHours();
     const temp = Math.round(item.main.temp);
     const icon = item.weather[0].icon;

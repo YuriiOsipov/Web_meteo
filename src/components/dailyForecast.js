@@ -1,9 +1,12 @@
 import { formatDateInDative } from "../healpers/formatDateInDative.js";
+import { showError } from "./error.js";
 
 const dailyForecast = document.querySelector(".forecast-list");
 
 export const renderDailyForecast = (data) => {
   dailyForecast.innerHTML = "";
+
+  if (!data) showError("Данні про погоду недоступні");
 
   const groupedData = groupDataByDay(data.list);
 
