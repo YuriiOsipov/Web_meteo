@@ -16,10 +16,9 @@
             id="themeSwitch"
             aria-label="Переключити на денну / нічну тему"
           />
-
-          <label for="themeSwitch">
-            <div class="switch-block">
-              <div class="indicator">
+          <label for="themeSwitch" title="Переключити тему">
+            <span class="switch-block">
+              <span class="indicator">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="13"
@@ -32,14 +31,15 @@
                     fill="currentColor"
                   />
                 </svg>
-              </div>
-            </div>
+              </span>
+            </span>
           </label>
         </div>
         <div id="error-message"></div>
         <form class="search-form">
           <div class="search-block">
             <input
+              id="search"
               type="search"
               class="city-input"
               placeholder="Введіть назву міста"

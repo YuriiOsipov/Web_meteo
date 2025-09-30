@@ -36,6 +36,7 @@ label {
 }
 
 .switch-block {
+  display: block;
   position: absolute;
   left: var(--left-position);
   transform: rotate(var(--rotate-angle));
