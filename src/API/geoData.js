@@ -1,5 +1,5 @@
 import { apiKey, baseUrl } from "./apiKeyAndHost.js";
-import { cityInput, getWeatherByForm } from "../components/inputForm.js";
+import { cityInput } from "../components/inputForm.js";
 import { showError } from "../components/error.js";
 import { isCyrillic } from "../healpers/checkCyrilic.js";
 import { saveCityToLocalStorage } from "../healpers/saveCityToLocalStorage.js";
@@ -10,9 +10,16 @@ import { renderDailyForecast } from "../components/dailyForecast.js";
 
 export const getGeoData = async () => {
   let city = cityInput.value.trim();
-
   if (!city) {
-    return;
+    try {
+      const recentCities = JSON.parse(localStorage.getItem("recentCities"));
+      city =
+        Array.isArray(recentCities) && recentCities.length > 0
+          ? recentCities[0]
+          : "Київ";
+    } catch (error) {
+      city = "Київ";
+    }
   }
 
   if (!isCyrillic(city)) {
