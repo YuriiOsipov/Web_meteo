@@ -13,11 +13,9 @@ export function geoLocation() {
       await fetchWeatherByCoords(latitude, longitude, locationName);
     } catch (error) {
       console.error("Помилка при отриманні геолокації: ", error.message);
-      if (JSON.parse(localStorage.getItem("recentCities"))?.length <= 1) {
-        showError(
-          "Не вдалося визначити ваше місцезнаходження. Будь ласка, введіть місце вручну"
-        );
-      }
+      showError(
+        "Не вдалося визначити ваше місцезнаходження. Будь ласка, введіть місце вручну"
+      );
     }
   });
 }
