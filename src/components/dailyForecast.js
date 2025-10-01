@@ -14,7 +14,6 @@ export const renderDailyForecast = (data) => {
     .slice(0, 5)
     .forEach((dayKey) => {
       const dayData = groupedData[dayKey];
-      console.log(dayData);
 
       const maxTemp = Math.round(
         Math.max(...dayData.map((item) => item.main.temp_max))
