@@ -50,9 +50,6 @@ export const getGeoData = async () => {
     const weatherData = await getWeather(lat, lon);
     const forecastData = await getForecast(lat, lon);
 
-    console.log(weatherData);
-    console.log(forecastData);
-
     renderCurrentWeather(weatherData, city);
     renderHourlyForecast(forecastData);
     renderDailyForecast(forecastData);
