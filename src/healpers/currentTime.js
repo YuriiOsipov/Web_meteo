@@ -1,6 +1,7 @@
+import { formatWeekday } from "./formatWeekday.js";
+
 export const formatDate = (date) => {
   const datePart = date.toLocaleDateString("uk-UA", {
-    weekday: "long",
     day: "numeric",
     month: "long",
   });
@@ -10,7 +11,9 @@ export const formatDate = (date) => {
     minute: "2-digit",
   });
 
-  return `${datePart} ⏳ ${timePart}`;
+  const weekDay = formatWeekday(date);
+
+  return `${weekDay} ${datePart} ⏳ ${timePart}`;
 };
 
 export const renderCurrentTime = () => {
